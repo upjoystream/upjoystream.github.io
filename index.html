@@ -1,138 +1,150 @@
 <!doctype html>
 <!--
-	Copyright © 2016 upJOY.stream. All rights reserved.
+  Copyright © 2016 upJOY.stream. All rights reserved.
 -->
 
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-<title>upjoy.stream</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>upjoy.stream</title>
 
-<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!--
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" />
--->
-<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
-<link rel="stylesheet" href="css/main.css">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" />
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
 
-<div class="mdl-layout">
-  
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
-  <div class="mdl-layout__header-row">
-    <span class="mdl-layout-title">
-      <h3>
-	<!--
-	<div style="font-family: 'Oswald';  font-weight: 700"> 
--->
-	<div style="font-family: 'Modak', cursive;"> 
-	  upJOY.stream 
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+
+
+    <div class="row medium-8  columns">
+
+      <span>
+	<h5>
+	  <div style="font-family: 'Oswald';  font-weight: 700" class="logo"> 
+	    <!--
+       <div style="font-family: 'Modak', cursive;"> 
+	    -->
+	    <span style="color: #e0e0e0;">up</span><span style="color: #ff4081;">joy</span><span style="color: #e0e0e0;">.</span><span style="color: #e0e0e0;">stream</span>
+       </div>
+	</h5>
+
+
+      </span>
+
+      <!-- Wide card with share menu button -->
+      <div class="demo-card-wide mdl-card mdl-shadow--16dp">
+	<video class="responsive-video" controls>
+	  <source src=http://techslides.com/demos/sample-videos/small.webm type=video/webm> 
+	    <source src=http://techslides.com/demos/sample-videos/small.ogv type=video/ogg> 
+	      <source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
+		<source src=http://techslides.com/demos/sample-videos/small.3gp type=video/3gp>
+	</video>
+
+	<div class="mdl-card__actions mdl-card--border">
+
+	  <span>
+	    <!-- Textfield with Floating Label -->
+	    <form action="#">
+	      <div class="mdl-textfield mdl-js-textfield">
+		<input class="mdl-textfield__input" type="text" id="transfers_post">
+		<label class="mdl-textfield__label" for="transfers_post">paste a .torrent or a magnet link here  </label>
+	      </div>
+	      <!-- Accent-colored raised button with ripple -->
+	      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+		<i class="material-icons">backup</i>
+		<!-- Transfer to cloud -->
+	      </button>
+	    </form>
+	  </span>
+
+
+	  <span>
+	    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+	      <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+		<i class="material-icons">search</i>
+	      </label>
+	      <div class="mdl-textfield__expandable-holder">
+		<input class="mdl-textfield__input" type="text" id="search-field">
+	      </div>
+	    </div>
+	  </span>
+
+	  <span>
+	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">settings_applications</i>
+	    </button>
+	  </span>
+
+	  <span>
+
+	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">exit_to_app</i>
+	    </button>
+	  </span>
+
 	</div>
-      </h3>
-    </span>
-    </br>
-    </br>
-    </br>
-    </br>
-
-    <!-- Textfield with Floating Label -->
-    <div class="download-cloud-header">
-    <form action="#">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-	<input class="mdl-textfield__input" type="text" id="sample3">
-	<label class="mdl-textfield__label" for="sample3"> Paste your link to a .torrent or a magnet link here </label>
       </div>
-      <!-- Accent-colored raised button with ripple -->
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	Transfer
-      </button>
-    </form>
-    </div>
 
-    <!-- Add spacer, to align navigation to the right in desktop -->
-    <div class=" mdl-layout-spacer"></div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-      <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
-	<i class="material-icons">search</i>
-      </label>
-      <div class="mdl-textfield__expandable-holder">
-	<input class="mdl-textfield__input" type="text" id="search-field">
+
+      </br>
+      </br>
+
+      <dialog class="mdl-dialog">
+      <div class="mdl-dialog__content">
+	<p>
+	Cloud Storage.
+	</p>
       </div>
-    </div>
-    <!-- Navigation -->
+      <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+	<button type="button" class="mdl-button">Agree</button>
+	<button type="button" class="mdl-button close">Disagree</button>
+      </div>
+      </dialog>
 
-    <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
-      <i class="material-icons">more_vert</i>
-    </button>
-    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-      <li class="mdl-menu__item">signin</li>
-      <li disabled class="mdl-menu__item">signup</li>
-      <li class="mdl-menu__item">signout</li>
-    </ul>
-  </div>
-
-
-  <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col">
-      this div is centered
-      <h3>
-	enter torrent link
-
-	<p class="z-depth-5">
-
-	<video class="responsive-video" controls>
-	  <source src="movie.mp4" type="video/mp4">
-	</video>
+      <dialog class="mdl-dialog">
+      <div class="mdl-dialog__content">
+	<p>
+	Activate your Google Drive Cloud Storage.
 	</p>
+      </div>
+      <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+	<button type="button" class="mdl-button">Agree</button>
+	<button type="button" class="mdl-button close">Disagree</button>
+      </div>
+      </dialog>
 
-	<!-- Raised button with ripple -->
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-	  Button
-	</button>
 
-	</br>
-	</br>
-	</br>
-	<p class="z-depth-5">
-	<video class="responsive-video" controls>
-	  <source src="movie.mp4" type="video/mp4">
-	</video>
+	  <hr>
+
+
+
+
+
+    <footer style="background-color: white" class="mdl-mega-footer">
+      <div class="">
+	<p class="">
+	  <div> © 2016 up<span style="color: #ff4081;">joy</span>.stream 
+	  </div>
+
+
+	</div>
 	</p>
+      </div>
+    </footer>
+    </div> 
 
-	<p class="z-depth-5">
-
-	<video class="responsive-video" controls>
-	  <source src="movie.mp4" type="video/mp4">
-	</video>
-	</p>
-
-
-      </h3>
-
-    </div>
-    <div class="mdl-layout-spacer"></div>
-  </div>
-
-
-
-
-  <footer style="background-color: white" class="mdl-mega-footer">
-    <div class="">
-      <p class="">
-      <div> © 2016 upJOY.stream </div>
-      </p>
-    </div>
-  </footer>
-
-</div>
-
-
-<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

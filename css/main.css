@@ -1,13 +1,18 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
 body {
-
-  margin:0 auto; 
-  width: 100% !important;
-  text-align: left;
-
-
+  display: table-cell;
+  vertical-align: middle;
   color: black;
   background-color: white;
-  
+
   font-family: 'Oswald';
   /*
   font-family: 'Modak', cursive;
@@ -16,7 +21,30 @@ body {
   font-size: 14px;
 }
 
+
+.logo{
+  text-shadow: 1px 1px 1px #000000;
+}
 .download-cloud-header{
+
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   justify-content: center;
 }
+
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('../assets/demos/welcome_card.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
 

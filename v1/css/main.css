@@ -47,4 +47,16 @@ body {
   color: #fff;
 }
 
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
 
+.mdl-dialog__actions--full-width>*{
+  text-align: center !important;
+}
+
+
+.footer_info{
+  display: inline-block;
+}

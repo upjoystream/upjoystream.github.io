@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--
       <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" />
-    -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
+    --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
 
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
@@ -31,11 +30,8 @@
       <span>
 	<h5>
 	  <div style="font-family: 'Oswald';  font-weight: 700" class="logo"> 
-	    <!--
-       <div style="font-family: 'Modak', cursive;"> 
-	    -->
 	    <span style="color: #e0e0e0;">up</span><span style="color: #ff4081;">joy</span><span style="color: #e0e0e0;">.</span><span style="color: #e0e0e0;">stream</span>
-       </div>
+	  </div>
 	</h5>
 
 
@@ -43,11 +39,8 @@
 
       <!-- Wide card with share menu button -->
       <div class="demo-card-wide mdl-card mdl-shadow--16dp">
-	<video class="responsive-video" controls>
-	  <source src=http://techslides.com/demos/sample-videos/small.webm type=video/webm> 
-	    <source src=http://techslides.com/demos/sample-videos/small.ogv type=video/ogg> 
-	      <source src=http://techslides.com/demos/sample-videos/small.mp4 type=video/mp4>
-		<source src=http://techslides.com/demos/sample-videos/small.3gp type=video/3gp>
+	<video class="responsive-video" controls autoplay>
+	  <source src="video/promo.mp4" type=video/mp4>
 	</video>
 
 	<div class="mdl-card__actions mdl-card--border">
@@ -80,21 +73,57 @@
 	  </span>
 
 	  <span>
-	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">settings_applications</i>
+	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">power_settings_new</i>
+	      Stream
+	    </button>
+	  </span>
+
+
+
+
+
+	  <span>
+	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">pageview</i>
+	      Browse
+	    </button>
+	  </span>
+
+
+	  <span>
+	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">swap_horiz</i>
+	      Transfer
 	    </button>
 	  </span>
 
 	  <span>
-
-	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">exit_to_app</i>
+	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">settings_system_daydream</i>
+	      Storage
 	    </button>
 	  </span>
 
+	  <span>
+	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">settings_applications</i>
+	      Settings
+	    </button>
+	  </span>
+
+
+	  <span>
+	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+	      <i class="material-icons">exit_to_app</i>
+	      Exit
+	    </button>
+	  </span>
+
+
+
 	</div>
       </div>
-
 
       </br>
       </br>
@@ -102,14 +131,28 @@
       <dialog class="mdl-dialog">
       <div class="mdl-dialog__content">
 	<p>
-	Cloud Storage.
+	Cloud Storage
 	</p>
       </div>
+
+
       <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-	<button type="button" class="mdl-button">Agree</button>
-	<button type="button" class="mdl-button close">Disagree</button>
+	<label for="google_drive_switch" class="mdl-switch mdl-js-switch">
+	  <span>
+	  <input type="checkbox" id="google_drive_switch" class="mdl-switch__input"> 
+	  </input>
+	  <img src="img/google_drive.png" width="80%"/>
+	  </span>
+	</label>
+	<br>
+	<br>
+	<br>
+	<br>
+	<button type="button" class="mdl-button close">Close</button>
       </div>
       </dialog>
+
+
 
       <dialog class="mdl-dialog">
       <div class="mdl-dialog__content">
@@ -124,23 +167,28 @@
       </dialog>
 
 
-	  <hr>
+      <footer style="background-color: white" class="mdl-mega-footer">
+
+	<hr>
+	<ul id="footer_info">
+	  <il>
+	  <a style="color:#e0e0e0;"> about </a>
+	  </il>
+	  <il>
+	  <a style="color:#e0e0e0;"> feature request</a>
+	  </il>
+	  <il>
+	  <a style="color:#e0e0e0;"> bugs </a>
+	  </il>
+
+	</ul>
+	<hr>
 
 
 
 
-
-    <footer style="background-color: white" class="mdl-mega-footer">
-      <div class="">
-	<p class="">
-	  <div> © 2016 up<span style="color: #ff4081;">joy</span>.stream 
-	  </div>
-
-
-	</div>
-	</p>
-      </div>
-    </footer>
+	© 2016 up<span style="color: #ff4081;">joy</span>.stream  - unlimited cloud transfers to watch anywhere, anytime!  
+      </footer>
     </div> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

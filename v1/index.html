@@ -39,9 +39,51 @@
 
       <!-- Wide card with share menu button -->
       <div class="demo-card-wide mdl-card mdl-shadow--16dp">
-	<video class="responsive-video" controls autoplay>
-	  <source src="video/promo.mp4" type=video/mp4>
-	</video>
+
+
+	<!--
+   <video id="upjoy_player" class="responsive-video" controls autoplay>
+   <source src="" type=video/mp4>
+   </video>
+	-->
+
+
+
+	<div id="hero">
+	  <div id="output">
+	    <div id="progressBar"></div>
+	  </div>
+
+	  <div id="status">
+	    <div>
+	      <span class="show-leech">Downloading </span>
+	      <span class="show-seed">Seeding </span>
+	      <code>
+		<a id="torrentLink" href="magnet:?xt=urn:btih:694abedd73ca2879418e8633285be9715116064f&dn=%5BTeensLoveHugeCocks%5D%20Piper%20Perri%20%28Hit%20It%20Again%20%2FNEW%2A%2A%2015.10.2016%29&&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce">sintddel.torrent</a>
+	      </code>
+	      <span class="show-leech"> from </span>
+	      <span class="show-seed"> to </span>
+	      <code id="numPeers">0 peers</code>. 
+	    </div>
+	    <div>
+	      <code id="downloaded"></code>
+	      of <code id="total"></code>
+	      — <span id="remaining"></span><br/>
+	      &#x2198;<code id="downloadSpeed">0 b/s</code>
+	      / &#x2197;<code id="uploadSpeed">0 b/s</code>
+	    </div>
+	  </div>
+	</div>
+
+
+
+
+
+
+
+
+
+
 
 	<div class="mdl-card__actions mdl-card--border">
 
@@ -52,145 +94,38 @@
 		<input class="mdl-textfield__input" type="text" id="transfers_post">
 		<label class="mdl-textfield__label" for="transfers_post">paste a .torrent or a magnet link here  </label>
 	      </div>
-	      <!-- Accent-colored raised button with ripple -->
-	      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-		<i class="material-icons">backup</i>
-		<!-- Transfer to cloud -->
-	      </button>
 	    </form>
 	  </span>
 
 
-	  <span>
-	    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-	      <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
-		<i class="material-icons">search</i>
-	      </label>
-	      <div class="mdl-textfield__expandable-holder">
-		<input class="mdl-textfield__input" type="text" id="search-field">
-	      </div>
-	    </div>
-	  </span>
-
-	  <span>
-	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">power_settings_new</i>
-	      Stream
-	    </button>
-	  </span>
 
 
+	  <footer style="background-color: white" class="mdl-mega-footer">
+
+	    <hr>
+	    <ul id="footer_info">
+	      <il>
+	      <a style="color:#e0e0e0;"> about </a>
+	      </il>
+	      <il>
+	      <a style="color:#e0e0e0;"> feature request</a>
+	      </il>
+	      <il>
+	      <a style="color:#e0e0e0;"> bugs </a>
+	      </il>
+
+	    </ul>
+	    <hr>
 
 
+	    © 2016 up<span style="color: #ff4081;">joy</span>.stream  -  The Web's Streaming Video Search Engine!  
+	  </footer>
+	</div> 
 
-	  <span>
-	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">pageview</i>
-	      Browse
-	    </button>
-	  </span>
-
-
-	  <span>
-	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">swap_horiz</i>
-	      Transfer
-	    </button>
-	  </span>
-
-	  <span>
-	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">settings_system_daydream</i>
-	      Storage
-	    </button>
-	  </span>
-
-	  <span>
-	    <button class="show-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">settings_applications</i>
-	      Settings
-	    </button>
-	  </span>
-
-
-	  <span>
-	    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-	      <i class="material-icons">exit_to_app</i>
-	      Exit
-	    </button>
-	  </span>
-
-
-
-	</div>
-      </div>
-
-      </br>
-      </br>
-
-      <dialog class="mdl-dialog">
-      <div class="mdl-dialog__content">
-	<p>
-	Cloud Storage
-	</p>
-      </div>
-
-
-      <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-	<label for="google_drive_switch" class="mdl-switch mdl-js-switch">
-	  <span>
-	  <input type="checkbox" id="google_drive_switch" class="mdl-switch__input"> 
-	  </input>
-	  <img src="img/google_drive.png" width="80%"/>
-	  </span>
-	</label>
-	<br>
-	<br>
-	<br>
-	<br>
-	<button type="button" class="mdl-button close">Close</button>
-      </div>
-      </dialog>
-
-
-
-      <dialog class="mdl-dialog">
-      <div class="mdl-dialog__content">
-	<p>
-	Activate your Google Drive Cloud Storage.
-	</p>
-      </div>
-      <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-	<button type="button" class="mdl-button">Agree</button>
-	<button type="button" class="mdl-button close">Disagree</button>
-      </div>
-      </dialog>
-
-
-      <footer style="background-color: white" class="mdl-mega-footer">
-
-	<hr>
-	<ul id="footer_info">
-	  <il>
-	  <a style="color:#e0e0e0;"> about </a>
-	  </il>
-	  <il>
-	  <a style="color:#e0e0e0;"> feature request</a>
-	  </il>
-	  <il>
-	  <a style="color:#e0e0e0;"> bugs </a>
-	  </il>
-
-	</ul>
-	<hr>
-
-
-	© 2016 up<span style="color: #ff4081;">joy</span>.stream  - unlimited cloud transfers to stream anywhere, anytime!  
-      </footer>
-    </div> 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-    <script src="js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+	<script src="http://momentjs.com/downloads/moment.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script src="js/main.js"></script>
   </body>
 </html>

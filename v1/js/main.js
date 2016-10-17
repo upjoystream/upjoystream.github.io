@@ -1,6 +1,7 @@
 // WebTorrent ------------------------ 
 
-var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
+//var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
+var torrentId = 'magnet:?xt=urn:btih:fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7&dn=Nikola+Tesla%27s+Life+New+Documentary+Full.mp4&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969'
 
 var client = new WebTorrent()
 

@@ -5,6 +5,28 @@
 
 <html lang="en">
   <head>
+    <!--
+
+      upjoy.stream 
+      https://upjoy.stream
+
+      Author     Mohamed Fouad aka zotherstupidguy
+      Website    http://upjoy.stream
+      Copyright  2016. upjoy.stream.
+
+      Data is not information.
+      Information is not knowledge.
+      Knowledge is not understanding.
+      Understanding is not wisdom.
+
+
+      Far better is it to dare mighty things, to win glorius triumphs,
+      even though checkered by failure... than to rank with those poor spirits
+      who neither enjoy nor suffer much, because they live in a gray twilight
+      that knows not victory nor defeat.
+      — Theodore Roosevelt
+    -->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
@@ -18,117 +40,173 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--
-      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" /> --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" /> 
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+    --> 
 
-    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <link href="http://vjs.zencdn.net/5.11.8/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- If you'd like to support IE8 -->
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
   </head>
   <body>
 
-
     <div class="row medium-8  columns">
 
-      <span>
-	<h5>
-	  <div style="font-family: 'Oswald';  font-weight: 700" class="logo"> 
-	    <span style="color: #e0e0e0;">up</span><span style="color: #ff4081;">joy</span><span style="color: #e0e0e0;">.</span><span style="color: #e0e0e0;">stream</span>
-	  </div>
-	</h5>
+      <div class="row">
+	<div class="col s12">
+	  <div class="row">
+	    <div class="input-field col s12 upjoystream-large-text">
+	      <!--<input type="text" id="search" class="autocomplete upjoystream-large-text">
+	      -->
+	      <input type="text" id="search" class="upjoystream-large-text" placeholder="search for video streams">
 
-
-      </span>
-
-      <!-- Wide card with share menu button -->
-      <div class="demo-card-wide mdl-card mdl-shadow--16dp">
-
-
-	<!--
-   <video id="upjoy_player" class="responsive-video" controls autoplay>
-   <source src="" type=video/mp4>
-   </video>
-	-->
-
-
-
-	<div id="hero">
-	  <div id="output">
-	    <div id="progressBar"></div>
-	  </div>
-
-	  <div id="status">
-	    <div>
-	      <span class="show-leech">Downloading </span>
-	      <span class="show-seed">Seeding </span>
-	      <code>
-
-		<a id="torrentLink" href="magnet:?xt=urn:btih:fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7&dn=Nikola+Tesla%27s+Life+New+Documentary+Full.mp4&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969">another.torrent</a>
-	      </code>
-	      <span class="show-leech"> from </span>
-	      <span class="show-seed"> to </span>
-	      <code id="numPeers">0 peers</code>. 
-	    </div>
-	    <div>
-	      <code id="downloaded"></code>
-	      of <code id="total"></code>
-	      — <span id="remaining"></span><br/>
-	      &#x2198;<code id="downloadSpeed">0 b/s</code>
-	      / &#x2197;<code id="uploadSpeed">0 b/s</code>
+	      <!--
+	 <label for="autocomplete-input">search for video streams</label>
+	 <a class="waves-effect waves-light btn-large" style="color: #e91e63">I'm feeling lucky</a>
+	      -->
 	    </div>
 	  </div>
 	</div>
+      </div>
 
+      <!--
+	<video id="upjoystream_player" class="video-js" controls preload="auto"  width="auto" height="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+	<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+	</video>
+      -->
 
+      <div id="query">
+      </div>
+      <br>
 
+      <div class="carousel carousel-slider center" data-indicators="true">
+	<div class="carousel-fixed-item center">
+	  <a class="btn waves-effect white grey-text darken-text-2 modal-trigger" href="#modal1">watch</a>
+	  </button>
+	</div>
+	<div id="results">
 
+	  <div class="carousel-item white black-text" href="#one!">
+	    <h2>Currently Active Video (Sintel)</h2>
+	    <p class="white-text center">
+	    Sintel Video is used as a showcase for Webtorrent portocol.
+	    details and a poster background of the video title retrived via some api or the microservice endpoint of upjoy.stream 
+	    link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
+	    </p>
+	  </div>
 
+	  <div class="carousel-item white black-text" href="#two!">
+	    <h2>2 Panel</h2>
+	    <p class="white-text">This is your second panel</p>
+	    link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
+	  </div>
 
+	</div> <!-- end of results -->
 
+      </div>
 
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+	<div class="modal-content">
+	  <!--<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+	  -->
 
+	</div>
 
+	<div class="modal-footer center">
+	  link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
+	  <!--
+     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Signup</a>
+	  -->
 
-	<div class="mdl-card__actions mdl-card--border">
+	</div>
+      </div>
 
-	  <span>
-	    <!-- Textfield with Floating Label -->
-	    <form action="#">
-	      <div class="mdl-textfield mdl-js-textfield">
-		<input class="mdl-textfield__input" type="text" id="transfers_post">
-		<label class="mdl-textfield__label" for="transfers_post">paste a .torrent or a magnet link here  </label>
-	      </div>
-	    </form>
-	  </span>
+      <!--
+	<div id="hero">
+	<div id="output">
+	<div id="progressBar"></div>
+	</div>
 
+	<div id="status">
+	<div>
+	<span class="show-leech">Downloading </span>
+	<span class="show-seed">Seeding </span>
+	<code>
 
+	<a id="torrentLink" href="magnet:?xt=urn:btih:fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7&dn=Nikola+Tesla%27s+Life+New+Documentary+Full.mp4&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969">another.torrent</a>
+	</code>
+	<span class="show-leech"> from </span>
+	<span class="show-seed"> to </span>
+	<code id="numPeers">0 peers</code>. 
+	</div>
+	<div>
+	<code id="downloaded"></code>
+	of <code id="total"></code>
+	— <span id="remaining"></span><br/>
+	&#x2198;<code id="downloadSpeed">0 b/s</code>
+	/ &#x2197;<code id="uploadSpeed">0 b/s</code>
+	</div>
+	</div>
+	</div>
+      -->
 
+      <footer style="background-color: white" class="mdl-mega-footer">
 
-	  <footer style="background-color: white" class="mdl-mega-footer">
+   <hr>
+	<!--
+   <hr>
+   <ul id="footer_info">
+   <il>
+   <a style="color:#e0e0e0;"> about </a>
+   </il>
+   <il>
+   <a style="color:#e0e0e0;"> feature request</a>
+   </il>
+   <il>
+   <a style="color:#e0e0e0;"> bugs </a>
+   </il>
 
-	    <hr>
-	    <ul id="footer_info">
-	      <il>
-	      <a style="color:#e0e0e0;"> about </a>
-	      </il>
-	      <il>
-	      <a style="color:#e0e0e0;"> feature request</a>
-	      </il>
-	      <il>
-	      <a style="color:#e0e0e0;"> bugs </a>
-	      </il>
+   </ul>
+   <hr>
 
-	    </ul>
-	    <hr>
+   <span>
+   <span>
+   <h5>
+   <div style="" class="logo"> 
+   <span style="color: #e0e0e0;">up</span><span style="color: #ff4081;">joy</span><span style="color: #e0e0e0;">.</span><span style="color: #e0e0e0;">stream</span>
+   </div>
+   </h5>
+   </span>
+	-->
+	<a> about </a>
+	<a> api </a>
+	<a> advertisements </a>
+	<a> terms </a>
+	<a> report </a>
+	</br>
+	<b> © 2016 up<span style="color: #ff4081;">joy</span>.stream  -  <span style="color:"> your favorite video streaming search engine </span></b>
+      </footer>
+    </div> 
 
+    <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    -->
 
-	    © 2016 up<span style="color: #ff4081;">joy</span>.stream  -  your joyful streaming search engine!  
-	  </footer>
-	</div> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
-	<script src="js/moment.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-	<script src="js/main.js"></script>
+    <script src="http://vjs.zencdn.net/5.11.8/video.js"></script>
+
+    <script src="js/main.js"></script>
   </body>
 </html>

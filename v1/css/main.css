@@ -13,8 +13,10 @@ body {
   color: black;
   background-color: white;
 
-  font-family: 'Poiret One', cursive;
+  font-family: 'Inconsolata', monospace;
+
   /*
+  font-family: 'Poiret One', cursive;
   font-family: 'Oswald';
   font-family: 'Modak', cursive;
    * font-weight: 700;
@@ -30,9 +32,14 @@ body {
 
 
 .logo{
+  /*
   font-family: 'Poiret One', cursive;
-  text-shadow: 1px 1px 1px black;
+   */
+  text-shadow: 0px 0.4px 0.4px black;
+  font-weight: bold !important;
+  letter-spacing: 4px;
 }
+
 .download-cloud-header{
 
   padding-right: 50px;
@@ -141,9 +148,91 @@ color: #e91e63 !important;
   height:auto !important;
 }
 
-.carousel .indicators .indicator-item{ 
-  background-color: rgb(255, 83, 141);
+
+a{
+  color: #000000 !important;
 }
-.carousel .indicators .indicator-item.active{ 
-  background-color: #ffc107 !important;
+
+.slick-dots li button:before{
+  color: rgb(255, 83, 141);
+  opacity: 1 !important;
+  font-size: 15px;
+}
+
+.slick-dots li.slick-active button:before{
+  color: #ffc107 !important;
+  opacity: 1 !important;
+  font-size: 15px;
+}
+
+.slick-active{
+  /*
+  color: red !important;
+   */
+}
+
+.waves-effect.waves-yellowish .waves-ripple {
+  /* The alpha value allows the text and background color
+   *      of the button to still show through. */
+  background-color: #ffc107; 
+  color: rgb(255, 83, 141) !important;
+}
+
+#results{
+  min-height: 400px !important;
+}
+
+.result{
+  font-weight: bold !important;
+  word-break:break-all !important;
+  white-space: pre-wrap; 
+  margin: 20px;
+  background-color: white;
+  color: green !important;
+  border: 10px solid transparent !important;
+  display: inline-block !important;
+  height: 300px !important;
+  border :2px solid black !important;
+
+  padding-bottom: 20px;
+  margin-bottom: 0px !important;
+  position: relative; /* anything but static */
+}
+
+.result .details{
+  color: black !important;
+  word-break:break-all !important;
+  margin: 20px;
+}
+
+.result .show{
+  width: 80% !important;
+
+  position: absolute;
+  bottom: 10% !important;
+  text-align: center !important;
+  left: 10% !important;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  /*color: #000;
+   */
+  opacity: 0.3 !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+  font-weight: bold !important;
+}
+
+#queryStats{
+/*
+  transform: scale(1,2);
+*/
+}
+
+.welcome{
+  margin: 0 auto; 
 }

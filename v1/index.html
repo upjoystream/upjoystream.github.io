@@ -35,8 +35,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!--
@@ -50,6 +52,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
     <link href="https://vjs.zencdn.net/5.11.8/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
+
+
     <link rel="stylesheet" href="css/main.css">
 
     <!-- If you'd like to support IE8 -->
@@ -82,53 +88,35 @@
 	</video>
       -->
 
-      <div id="query">
+      <div id="queryStats">
       </div>
       <br>
 
-      <div class="carousel carousel-slider center" data-indicators="true">
-	<div class="carousel-fixed-item center">
-	  <a class="btn waves-effect white grey-text darken-text-2 modal-trigger" href="#modal1">watch</a>
-	  </button>
-	</div>
-	<div id="results">
+      <!-- 
+	<div id="results" class="carousel carousel-slider center" data-indicators="true">
+      -->
+      <div id="results" class='center' style='' data-indicators="true">
 
-	  <div class="carousel-item white black-text" href="#one!">
-	    <h2>Currently Active Video (Sintel)</h2>
-	    <p class="white-text center">
-	    Sintel Video is used as a showcase for Webtorrent portocol.
-	    details and a poster background of the video title retrived via some api or the microservice endpoint of upjoy.stream 
-	    link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
-	    </p>
-	  </div>
-
-	  <div class="carousel-item white black-text" href="#two!">
-	    <h2>2 Panel</h2>
-	    <p class="white-text">This is your second panel</p>
-	    link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
-	  </div>
-
-	</div> <!-- end of results -->
-
+	Welcome to upjoy.stream! its a neat experiance for finding, sharing and streaming videos that you like!
+	<br />
+	We hope you enjoy it, its 100% free!
       </div>
 
       <!-- Modal Structure -->
-      <div id="modal1" class="modal modal-fixed-footer">
+      <div id="theater" class="modal modal-fixed-footer">
 	<div class="modal-content">
 	  <!--<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
 	  -->
-
 	</div>
-
 	<div class="modal-footer center">
 	  link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
 	  <!--
      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Signup</a>
 	  -->
-
 	</div>
       </div>
 
+      
       <!--
 	<div id="hero">
 	<div id="output">
@@ -187,12 +175,13 @@
    </span>
 	-->
 	<a> about </a>
+	<!-- about: google allows you to find out the location of a resource, upjoy.stream belives that a search engine should allow you to get your hands on the resource, content-based search vs location-based search, thus upjoy.stream searchs video-based active torrent swarms and lets you join any active swarm to start streaming the video to your computer. TODO rewrite in simpler straightforward manner grandma-style -->
 	<a> api </a>
 	<a> advertisements </a>
 	<a> terms </a>
 	<a> report </a>
 	</br>
-	<b> © 2016 up<span style="color: #ff4081;">joy</span>.stream  -  <span style="color:"> your favorite video streaming search engine </span></b>
+	<b> © 2016 <span class="logo"> <span style="color: #ff4081;">upjoy</span>.<span style="color: #ffc107;">stream</span>  </span>-  <span style="color:"> p2p video streaming search engine </span></b>
       </footer>
     </div> 
 
@@ -206,6 +195,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
     <script src="https://vjs.zencdn.net/5.11.8/video.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 
     <script src="js/main.js"></script>
   </body>

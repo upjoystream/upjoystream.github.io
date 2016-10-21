@@ -11,9 +11,7 @@
       Author     Mohamed Fouad aka zotherstupidguy
       Website    http://upjoy.stream
       Copyright  2016. upjoy.stream.
-
-      Data is not information.
-      Information is not knowledge.
+Data is not information.  Information is not knowledge.
       Knowledge is not understanding.
       Understanding is not wisdom.
 
@@ -31,12 +29,20 @@
 
 
   </head>
-  <!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
     <body>
+
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+      <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/css/style.css"/>
+      <link rel="stylesheet" type="text/css" href="https://kenwheeler.github.io/slick/css/prism.css"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+      <!--
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
 
       <div id="query">
       </div>
@@ -47,9 +53,10 @@
 
       <input id="searchterm" />
 
-      <button id="search">search</button>
+      <div id="results" class="slider" style="height=100px; width=100px">
+      </div>
 
-      <div id="results"></div>
+
 
       <script type="text/javascript">
 
@@ -74,7 +81,31 @@ $(document).ready(function() {
 	console.log(data);
 	console.log(data.query);
 	console.log(data.tpbbot);
+	var torrents = data.tpbbot.torrents;
 	console.log(data.tpbbot.torrents[0]);
+
+	// Clears the slider from previous results
+	$('#results').slick('unslick');
+	$('#results').empty();
+	initSlides();
+
+	$.each (torrents, function (torrent) {
+	  console.log (torrent);
+	  console.log (torrents[torrent].name);
+	  torrent = torrents[torrent];
+	  // adds a slide per result
+	  //slideIndex++;
+	  $('#results').slick('slickAdd',"<div>" + 
+	      torrent.name + " </br> "  
+	      + torrent.magnet_link + " </br> " + torrent.seeders + " </br> " + torrent.total_size + " </br> <div> </br> </br>" +
+	      '<a class="btn waves-effect white grey-text darken-text-2 modal-trigger" href="#modal1">watch</a> </br> </br>'
+	      +
+	      "</div> </div>");
+	  //console.log (a[bb].TEST1);
+	});
+
+
+
 	$('#query').empty().append(data.query + " | ");
 	$('#tpbbot').empty().append("<b>" + data.tpbbot.torrents[0].name + "</b> </br>" );
 	//$('.greeting-content').append(data.content);
@@ -89,11 +120,43 @@ $(document).ready(function() {
     }, 1000 );
   });
 
-
 });
+
+
+var slider = $('#results');
+function initSlides(){
+
+  slider.slick({
+    centerMode: false,
+    arrows: false,
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    fade: false,
+    lazyLoad: 'ondemand',
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    accessibility: true
+      //cssEase: 'linear'
+  });
+}
+
+initSlides();
+
+// Get the current slide
+var currentSlide = $('#results').slick('slickCurrentSlide');
+  console.log(currentSlide);
+
+  // On before slide change
+  $('#results').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    // can be used as torrents[nextSlide] to get the choice of the result and send it to WATCH 
+    console.log(nextSlide);
+  });
+
+
       </script>
-
-
 
     </body>
 </html>

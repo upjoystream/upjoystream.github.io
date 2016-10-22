@@ -1,3 +1,5 @@
+//TODO need to show status if online or offile, and when connected online do an automatic search of the failed one
+
 $(document).ready(function () {
 
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -127,7 +129,7 @@ $(document).ready(function () {
     slider.slick({
       arrows: false,
       dots: true,
-      speed: 2000,
+      speed: 1000,
       fade: false,
       lazyLoad: 'ondemand',
 
@@ -140,7 +142,7 @@ $(document).ready(function () {
 
       autoplay: true,
       //autoplay: false,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 8000,
       pauseOnHover: true,
 
       accessibility: true,

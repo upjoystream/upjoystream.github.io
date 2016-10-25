@@ -54,8 +54,8 @@ $(document).ready(function () {
   // Bots API
   function bots(q){
     $.ajax({
-      //url: "https://api.upjoy.stream/v1/bots",
-      url: "http://localhost/",
+      url: "https://api.upjoy.stream/v1/bots",
+      //url: "http://localhost/",
       data: "query=" + q + "&bots=all",
       dataType: 'json',
       success: function (data) {

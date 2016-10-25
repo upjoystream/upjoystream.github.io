@@ -140,6 +140,8 @@ color: #e91e63 !important;
    */
   font-size: 30px !important;
   font-weight: 700 !important;
+  background-color: white !important;
+  background-image: none !important;
 }
 
 
@@ -207,7 +209,15 @@ a{
 
 .result .show{
   width: 80% !important;
+  position: absolute;
+  bottom: 10% !important;
+  text-align: center !important;
+  left: 10% !important;
+}
 
+.magnet{
+  color: black !important;
+  width: 80% !important;
   position: absolute;
   bottom: 10% !important;
   text-align: center !important;
@@ -235,4 +245,17 @@ a{
 
 .welcome{
   margin: 0 auto; 
+}
+
+#search{
+  background-color: white !important;
+  background-image: none !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s !important;
 }

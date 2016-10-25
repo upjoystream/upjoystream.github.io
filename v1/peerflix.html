@@ -1,0 +1,29 @@
+<video width="320" height="240" controls>
+  <source src="" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+      Your browser does not support the video tag.
+</video>
+
+
+<head>
+  <link href="http://vjs.zencdn.net/vjs-version/video-js.css" rel="stylesheet">
+
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+</head>
+
+<body>
+  <video controls="" autoplay="" src="blob:https://webtorrent.io/ee64f948-7ddd-4556-a2fa-f5ec859f33c8"></video>
+
+  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+									    poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+    <source src="http://localhost:9000/torrents/3be7ce37086da3f6cd494ca30c877ea4e1fcafc5/files/White.Island.2016.HDRip.XViD-ETRG%2Fsample.avi" type='video/mp4'>
+      <source src="MY_VIDEO.webm" type='video/webm'>
+	<p class="vjs-no-js">
+	To view this video please enable JavaScript, and consider upgrading to a web browser that
+	<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+	</p>
+  </video>
+
+  <script src="http://vjs.zencdn.net/vjs-version/video.js"></script>
+</body>

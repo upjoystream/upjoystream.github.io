@@ -2,6 +2,9 @@
 
 $(document).ready(function () {
 
+  // copy paste magnet
+  new Clipboard('.btn');
+
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 
@@ -52,7 +55,7 @@ $(document).ready(function () {
   function bots(q){
     $.ajax({
       //url: "https://api.upjoy.stream/v1/bots",
-      url: "http://localhost:9292/",
+      url: "http://localhost/",
       data: "query=" + q + "&bots=all",
       dataType: 'json',
       success: function (data) {
@@ -83,7 +86,8 @@ $(document).ready(function () {
 	      "Name: " + torrent.name + 
 	      " </br> Seeders: " + torrent.seeders + " </br> Size:" + torrent.total_size + " </br> </br>" +
 	      "</div>" + 
-	      '<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
+	      "<button class='magnet btn waves-effect waves-yellowish white' data-clipboard-text='" +  torrent.magnet_link  + "'> copy magnet </button>" +
+	      //'<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
 	      "</br> </br></div>");
 	  //console.log (a[bb].TEST1);
 	});
@@ -129,7 +133,7 @@ $(document).ready(function () {
     slider.slick({
       arrows: false,
       dots: true,
-      speed: 1000,
+      speed: 500,
       fade: false,
       lazyLoad: 'ondemand',
 
@@ -173,27 +177,26 @@ $(document).ready(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // WebTorrent ------------------------ 
-//var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
-var torrentId = 'magnet:?xt=urn:btih:fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7&dn=Nikola+Tesla%27s+Life+New+Documentary+Full.mp4&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969'
+var torrentId = 'fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7'
+var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
+var torrentId = "magnet:?xt=urn:btih:4627721f1ce03613d7f1ace63ec20cadc612c130&dn=Dirty%20Masseur%2012%20%28Brazzers%29%20%E2%9C%A6%20NEW%20%E2%9C%A6%202016%20%2C%20WEB-DL%20Split%20Scenes&&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce"
 
-var client = new WebTorrent()
+var torrentId = "0797d5d4396f39414b960392f702d2422dfd88aa"
+
+var opts = {
+  //maxConns: Number,        // Max number of connections per torrent (default=55)
+  //nodeId: String|Buffer,   // DHT protocol node ID (default=randomly generated)
+  //peerId: String|Buffer,   // Wire protocol peer ID (default=randomly generated)
+  //tracker:  //Boolean|Object, // Enable trackers (default=true), or options object for Tracker
+  //dht: Boolean|Object,     // Enable DHT (default=true), or options object for DHT
+  //webSeeds: Boolean        // Enable BEP19 web seeds (default=true)
+  //announce: ['wss://tracker.openwebtorrent.com'], // list of tracker server urls
+}
+
+var client = new WebTorrent(opts)
+client.tracker = ['wss://tracker.openwebtorrent.com', 'wss://tracker.btorrent.xyz', 'wss://tracker.fastcast.nz']
+console.log(client.tracker)
 
 // HTML elements
 var $body = document.body
@@ -207,6 +210,10 @@ var $downloadSpeed = document.querySelector('#downloadSpeed')
 
 // Download the torrent
 client.add(torrentId, function (torrent) {
+
+  // as per https://github.com/feross/webtorrent/issues/218
+  // shouldn't it be an array of trackers?
+  //announce: 'wss://tracker.webtorrent.io'
 
   // Stream the file in the browser
   torrent.files[0].appendTo('#output')
@@ -257,6 +264,8 @@ function prettyBytes(num) {
   unit = units[exponent]
   return (neg ? '-' : '') + num + ' ' + unit
 }
+console.log(client)
+
 // WebTorrent ends ------------------------ 
 //
 

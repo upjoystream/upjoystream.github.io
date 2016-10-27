@@ -129,6 +129,8 @@ $(document).ready(function () {
 	$('#tpbbot').empty().append("<b>" + data.tpbbot.torrents[0].name + "</b> </br>" );
 	//$('.greeting-content').append(data.content);
 
+	$('#query_done').get(0).volume=0.1;
+	$('#query_done').get(0).play();
       },
     });
   };

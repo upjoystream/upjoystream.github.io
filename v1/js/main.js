@@ -8,16 +8,27 @@ $(document).ready(function () {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
 
+  // prevent textbox from being affected by navigation
+  $(document).keydown(function (e) {
+    var element = e.target.nodeName.toLowerCase();
+    if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
+      if (e.keyCode === 8) {
+	return false;
+      }
+    }
+  });
+
+
   $("body").keydown(function(e){
     // left arrow
     if ((e.keyCode || e.which) == 37)
     {   
-      //TODO $('.carousel').carousel('prev');
+      $('#results').slick("slickPrev");
     }
     // right arrow
     if ((e.keyCode || e.which) == 39)
     {
-      //TODO $('.carousel').carousel('next');
+      $('#results').slick("slickNext");
     }   
   });
 
@@ -53,10 +64,12 @@ $(document).ready(function () {
 
   // Bots API
   function bots(q){
+    console.log("sending a query request for: " + q);
     $.ajax({
       url: "https://api.upjoy.stream/v1/bots",
-      //url: "http://localhost/",
-      data: "query=" + q + "&bots=all",
+      //url: "https://0.0.0.0/v1/bots",
+      data: 'query=' + q,
+      //data: 'query=' + q + '&bots=all',
       dataType: 'json',
       success: function (data) {
 	// Show Query Stats

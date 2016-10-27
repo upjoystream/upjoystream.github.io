@@ -20,16 +20,26 @@ $(document).ready(function () {
 
 
   $("body").keydown(function(e){
-    // left arrow
-    if ((e.keyCode || e.which) == 37)
-    {   
-      $('#results').slick("slickPrev");
+    switch(e.which) {
+      case 37: // left
+	$('#results').slick("slickPrev");
+	break;
+
+      case 38: // up
+	$('#results').slick("slickNext");
+	break;
+
+      case 39: // right
+	$('#results').slick("slickNext");
+	break;
+
+      case 40: // down
+	$('#results').slick("slickPrev");
+	break;
+
+      default: return; // exit this handler for other keys
     }
-    // right arrow
-    if ((e.keyCode || e.which) == 39)
-    {
-      $('#results').slick("slickNext");
-    }   
+    e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
 

@@ -2,6 +2,18 @@
 
 $(document).ready(function () {
 
+  // scroll the results
+  $('#results').on('mousewheel', function(event) {
+    //console.log(event.deltaX, event.deltaY, event.deltaFactor);
+    window.onwheel = function(){ return false; }
+    if (event.deltaY === +1) {
+      $('#results').slick("slickNext");
+    };
+    if (event.deltaY === -1) {
+      $('#results').slick("slickPrev");
+    };
+  });
+
   // copy paste magnet
   new Clipboard('.btn');
 
@@ -16,6 +28,9 @@ $(document).ready(function () {
 	return false;
       }
     }
+
+    // makes search gets focused whenever there is a keydown
+    $("#search").focus();
   });
 
 

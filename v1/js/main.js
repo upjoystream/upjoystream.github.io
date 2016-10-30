@@ -1,6 +1,31 @@
 //TODO need to show status if online or offile, and when connected online do an automatic search of the failed one
 
 $(document).ready(function () {
+  // noty
+
+  function nodify(type, text) {
+    var n = noty({
+      text        : text,
+      type        : type,
+      dismissQueue: true,
+      layout      : 'topRight',
+      closeWith: ['click', 'hover'],
+      theme       : 'relax',
+      maxVisible  : 10,
+      timeout: 1500,
+      //modal: true,
+      animation   : {
+	open  : 'animated flipInX',
+	close : 'animated flipOutX',
+	speed : 500
+      }
+    });
+    console.log('html: ' + n.options.id);
+  }
+
+
+  // noty ends
+
 
   // scroll the results
   $('#results').on('mousewheel', function(event) {
@@ -15,7 +40,21 @@ $(document).ready(function () {
   });
 
   // copy paste magnet
-  new Clipboard('.btn');
+
+  var clipboard = new Clipboard('.btn', {
+    text: function(trigger) {
+      return trigger.getAttribute('id');
+    }
+  });
+
+  clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    nodify('', "COPIED " + e.text);
+    e.clearSelection();
+  });
+  // copy paste magnet end
 
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal-trigger').leanModal();
@@ -124,7 +163,7 @@ $(document).ready(function () {
 	      "Name: " + torrent.name + 
 	      " </br> Seeders: " + torrent.seeders + " </br> Size:" + torrent.total_size + " </br> </br>" +
 	      "</div>" + 
-	      "<button class='magnet btn waves-effect waves-yellowish white' data-clipboard-text='" +  torrent.magnet_link  + "'> copy magnet </button>" +
+	      "<button id='" + torrent.name + "' class='magnet btn waves-effect waves-yellowish white' data-clipboard-text='" +  torrent.magnet_link  + "'> copy magnet </button>" +
 	      //'<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
 	      "</br> </br></div>");
 	  //console.log (a[bb].TEST1);
@@ -173,7 +212,7 @@ $(document).ready(function () {
     slider.slick({
       arrows: false,
       dots: true,
-      speed: 500,
+      speed: 300,
       fade: false,
       lazyLoad: 'ondemand',
 

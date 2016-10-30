@@ -9,10 +9,10 @@ $(document).ready(function () {
       type        : type,
       dismissQueue: true,
       layout      : 'topRight',
-      closeWith: ['click', 'hover'],
+      //closeWith: ['click', 'hover'],
       theme       : 'relax',
       maxVisible  : 10,
-      timeout: 1500,
+      timeout: 2000,
       //modal: true,
       animation   : {
 	open  : 'animated flipInX',
@@ -63,20 +63,23 @@ $(document).ready(function () {
   $('.modal-trigger').leanModal();
 
   // prevent textbox from being affected by navigation
-  $(document).keydown(function (e) {
-    var element = e.target.nodeName.toLowerCase();
-    if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
-      if (e.keyCode === 8) {
-	return false;
-      }
-    }
-
-    // makes search gets focused whenever there is a keydown
-    $("#search").focus();
-  });
-
+  //$(document).keydown(function (e) {
+  // var element = e.target.nodeName.toLowerCase();
+  //if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
+  // if (e.keyCode === 8) {
+  //	return false;
+  //     }
+  //   }
+  //   // makes search gets focused whenever there is a keydown
+  //  $("#search").focus();
+  // });
 
   $("body").keydown(function(e){
+    var element = e.target.nodeName.toLowerCase();
+    if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
+      $("#search").focus();
+    }
+
     switch(e.which) {
       case 37: // left
 	$('#results').slick("slickPrev");
@@ -96,6 +99,7 @@ $(document).ready(function () {
 
       default: return; // exit this handler for other keys
     }
+
     e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
@@ -161,14 +165,14 @@ $(document).ready(function () {
 	  // adds a slide per result
 	  //slideIndex++;
 	  $('#results').slick('slickAdd',
-	    "<div class='result'>" + 
-	      "<div class='details'>" + 
-	      "Name: " + torrent.name + 
-	      " </br> Seeders: " + torrent.seeders + " </br> Size:" + torrent.total_size + " </br> </br>" +
-	      "</div>" + 
-	      "<button id='" + torrent.name + "' class='magnet btn waves-effect waves-yellowish white' data-clipboard-text='" +  torrent.magnet_link  + "'> copy magnet </button>" +
+	    '<div class="result">' + 
+	      '<div class="details">' + 
+	      'Name: ' + torrent.name + 
+	      ' </br> Seeders: ' + torrent.seeders + ' </br> Size:' + torrent.total_size + ' </br> </br>' +
+	      '</div>' + 
+	      '<button id="' + torrent.name + '" class="magnet btn waves-effect waves-yellowish white" data-clipboard-text="' +  torrent.magnet_link  + '"> copy magnet </button>' +
 	      //'<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
-	      "</br> </br></div>");
+	      '</br> </br></div>');
 	  //console.log (a[bb].TEST1);
 	});
 

@@ -54,6 +54,9 @@ $(document).ready(function () {
     nodify('', "COPIED " + e.text);
     e.clearSelection();
   });
+
+  // copy the magnet
+  new Clipboard('.btn');
   // copy paste magnet end
 
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

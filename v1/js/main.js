@@ -1,7 +1,7 @@
 //TODO need to show status if online or offile, and when connected online do an automatic search of the failed one
-console.log('%c | ------------------------------------- |', 'background: black; color: yellow; display: block;');
-console.log('%c | upjoy.stream - sponsored by hackspree |', 'background: black; color: yellow; display: block;');
-console.log('%c | ------------------------------------- |', 'background: black; color: yellow; display: block;');
+console.log('%c | ------------------------------------- |', 'background: #792e93; color: yellow; display: block;');
+console.log('%c | upjoy.stream - sponsored by hackspree |', 'background: #792e93; color: yellow; display: block;');
+console.log('%c | ------------------------------------- |', 'background: #792e93; color: yellow; display: block;');
 
 $(document).ready(function () {
   // noty

@@ -15,7 +15,7 @@ $(document).ready(function () {
       //closeWith: ['click', 'hover'],
       theme       : 'relax',
       maxVisible  : 10,
-      timeout: 2000,
+      timeout: 5000,
       //modal: true,
       animation   : {
 	open  : 'animated flipInX',

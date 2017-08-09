@@ -1,0 +1,24 @@
+#lyricsBox {
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.wrap {
+/*    width: 100%;
+ */
+    overflow:auto;
+}
+
+.fleft {
+    float:left;
+    background:blue;
+    width: 50%;
+    height: 400px;
+}
+
+.fright {
+    float: right;
+    background:pink;
+    width: 50%;
+    height: 400px;
+}

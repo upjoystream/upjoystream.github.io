@@ -105,13 +105,6 @@ body.is-seed .show-leech {
   border-bottom: 1px dashed rgba(255,255,255,0.3);
 }
 
-.is-seed #hero {
-  background-color: #154820;
-  transition: .5s .5s background-color ease-in-out;
-}
-#hero {
-  background-color: #2a3749;
-}
 #status {
   color: #fff;
   font-size: 17px;
@@ -153,24 +146,6 @@ color: #e91e63 !important;
 
 a{
   color: #000000 !important;
-}
-
-.slick-dots li button:before{
-  color: rgb(255, 83, 141);
-  opacity: 1 !important;
-  font-size: 15px;
-}
-
-.slick-dots li.slick-active button:before{
-  color: #ffc107 !important;
-  opacity: 1 !important;
-  font-size: 15px;
-}
-
-.slick-active{
-  /*
-  color: red !important;
-   */
 }
 
 .waves-effect.waves-yellowish .waves-ripple {
@@ -259,3 +234,24 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s !important;
 }
+
+/* image cube */
+.swiper-container {
+	width: 300px;
+	height: 300px;
+
+	/*
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -150px;
+	margin-top: -150px;
+	 */
+}
+.swiper-slide {
+	background-position: center;
+	background-size: cover;
+	box-shadow: 0 8px 6px -6px black;
+}
+
+.icobutton .fa{ display: inline !important}

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Swiper demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<!--
+		<link rel="stylesheet" href="../dist/css/swiper.min.css">
+-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/css/swiper.min.css">
+
+		<style>
+	.swiper-container {
+		width: 500px;
+		height: 500px;
+		position: absolute;
+		/*
+left: 50%;
+top: 50%;
+margin-left: -150px;
+margin-top: -150px;
+		 */
+	}
+	.swiper-slide {
+		background-position: center;
+		background-size: cover;
+	}
+		</style>
+	</head>
+	<body>
+
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+<!--
+-->
+<div class="swiper-slide" style="background-image:url(
+				/home/zautomata/Opensource/tinder.sh/DATA/52d7ece2042220b603000d6e.gif
+)"></div>
+<div class="swiper-slide" style="background-image:url(
+/home/zautomata/Opensource/tinder.sh/DATA/52d73c61eb5c6f6b0900084a.gif
+)"></div>
+<div class="swiper-slide" style="background-image:url(/home/zautomata/Opensource/tinder.sh/DATA/52d739707b67a73b09000832.gif)"></div>
+<div class="swiper-slide" style="background-image:url(
+/home/zautomata/Opensource/tinder.sh/DATA/52d7c5c302e4857476000c33.gif
+)"></div>
+<div class="swiper-slide" style="background-image:url(
+/home/zautomata/Opensource/tinder.sh/DATA/52d749e0938e01a53f0008cc.gif
+)"></div>
+<div class="swiper-slide" style="background-image:url(
+/home/zautomata/Opensource/tinder.sh/DATA/52d7eedc12ef838f10000ba1.gif
+					)"></div>
+
+			</div>
+			<!--
+	   <div class="swiper-pagination"></div>
+			-->
+		</div>
+<!--
+		<script src="../dist/js/swiper.min.js"></script>
+		-->		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.2.6/js/swiper.min.js"></script>
+
+		<script>
+var swiper = new Swiper('.swiper-container', {
+	effect: 'cube',
+	grabCursor: true,
+	cubeEffect: {
+		shadow: true,
+		slideShadows: true,
+		shadowOffset: 10,
+		shadowScale: 0.9,
+	},
+	pagination: {
+		el: '.swiper-pagination',
+	},
+	loop: true,
+	keyboard: {
+		enabled: true,
+		onlyInViewport: false,
+	},
+});
+
+		</script>
+	</body>
+</html>
+

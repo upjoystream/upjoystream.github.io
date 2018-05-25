@@ -1,389 +1,431 @@
 //TODO need to show status if online or offile, and when connected online do an automatic search of the failed one
 console.log('%c | ------------------------------------- |', 'background: #792e93; color: yellow; display: block;');
-console.log('%c | upjoy.stream - sponsored by hackspree |', 'background: #792e93; color: yellow; display: block;');
+console.log('%c | upjoy.stream - a project by hackspree |', 'background: #792e93; color: yellow; display: block;');
 console.log('%c | ------------------------------------- |', 'background: #792e93; color: yellow; display: block;');
 
 $(document).ready(function () {
-  // noty
+	// noty
 
-  function nodify(type, text) {
-    var n = noty({
-      text        : text,
-      type        : type,
-      dismissQueue: true,
-      layout      : 'topRight',
-      //closeWith: ['click', 'hover'],
-      theme       : 'relax',
-      maxVisible  : 10,
-      timeout: 5000,
-      //modal: true,
-      animation   : {
-	open  : 'animated flipInX',
-	close : 'animated flipOutX',
-	speed : 500
-      }
-    });
-    console.log('html: ' + n.options.id);
-  }
+	function nodify(type, text) {
+		var n = noty({
+			text        : text,
+			type        : type,
+			dismissQueue: true,
+			layout      : 'topRight',
+			//closeWith: ['click', 'hover'],
+			theme       : 'relax',
+			maxVisible  : 10,
+			timeout: 5000,
+			//modal: true,
+			animation   : {
+				open  : 'animated flipInX',
+				close : 'animated flipOutX',
+				speed : 500
+			}
+		});
+		console.log('html: ' + n.options.id);
+	};
 
+	new Noty({
+		text: 'NOTY - animating with Mo.js!',
+		animation: {
+			open: function (promise) {
+				var n = this;
+				var Timeline = new mojs.Timeline();
+				var body = new mojs.Html({
+					el        : n.barDom,
+					x         : {500: 0, delay: 0, duration: 500, easing: 'elastic.out'},
+					isForce3d : true,
+					onComplete: function () {
+						promise(function(resolve) {
+							resolve();
+						})
+					}
+				});
 
-  // noty ends
+				var parent = new mojs.Shape({
+					parent: n.barDom,
+					width      : 200,
+					height     : n.barDom.getBoundingClientRect().height,
+					radius     : 0,
+					x          : {[150]: -150},
+					duration   : 1.2 * 500,
+					isShowStart: true
+				});
 
+				n.barDom.style['overflow'] = 'visible';
+				parent.el.style['overflow'] = 'hidden';
 
-  // scroll the results
-  $('#results').on('mousewheel', function(event) {
-    //console.log(event.deltaX, event.deltaY, event.deltaFactor);
-    window.onwheel = function(){ return false; }
-    if (event.deltaY === +1) {
-      $('#results').slick("slickNext");
-    };
-    if (event.deltaY === -1) {
-      $('#results').slick("slickPrev");
-    };
-  });
+				var burst = new mojs.Burst({
+					parent  : parent.el,
+					count   : 10,
+					top     : n.barDom.getBoundingClientRect().height + 75,
+					degree  : 90,
+					radius  : 75,
+					angle   : {[-90]: 40},
+					children: {
+						fill     : '#EBD761',
+						delay    : 'stagger(500, -50)',
+						radius   : 'rand(8, 25)',
+						direction: -1,
+						isSwirl  : true
+					}
+				});
 
-  // copy paste magnet
+				var fadeBurst = new mojs.Burst({
+					parent  : parent.el,
+					count   : 2,
+					degree  : 0,
+					angle   : 75,
+					radius  : {0: 100},
+					top     : '90%',
+					children: {
+						fill     : '#EBD761',
+						pathScale: [.65, 1],
+						radius   : 'rand(12, 15)',
+						direction: [-1, 1],
+						delay    : .8 * 500,
+						isSwirl  : true
+					}
+				});
 
-  var clipboard = new Clipboard('.btn', {
-    text: function(trigger) {
-      return trigger.getAttribute('id');
-    }
-  });
-
-  clipboard.on('success', function(e) {
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
-    nodify('', "COPIED " + e.text);
-    e.clearSelection();
-  });
-
-  // copy the magnet
-  new Clipboard('.btn');
-  // copy paste magnet end
-
-  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-  $('.modal-trigger').leanModal();
-
-  // prevent textbox from being affected by navigation
-  //$(document).keydown(function (e) {
-  // var element = e.target.nodeName.toLowerCase();
-  //if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
-  // if (e.keyCode === 8) {
-  //	return false;
-  //     }
-  //   }
-  //   // makes search gets focused whenever there is a keydown
-  //  $("#search").focus();
-  // });
-
-  $("body").keydown(function(e){
-    var element = e.target.nodeName.toLowerCase();
-    if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
-      $("#search").focus();
-    }
-
-    switch(e.which) {
-      case 37: // left
-	$('#results').slick("slickPrev");
-	break;
-
-      case 38: // up
-	$('#results').slick("slickNext");
-	break;
-
-      case 39: // right
-	$('#results').slick("slickNext");
-	break;
-
-      case 40: // down
-	$('#results').slick("slickPrev");
-	break;
-
-      default: return; // exit this handler for other keys
-    }
-
-    e.preventDefault(); // prevent the default action (scroll / move caret)
-  });
-
-
-  //$('.carousel.carousel-slider').carousel({full_width: true});
-
-  //TODO this talks to the bots endpoint to get suggestions
-  $('.autocomplete').autocomplete({
-    data: {
-      "Apple": null,
-      "Aexaaaple": null,
-      "Microsoft": null,
-      "Google": 'http://placehold.it/250x250'
-    }
-  });
+				Timeline.add(body, burst, fadeBurst, parent);
+				Timeline.play();
+			},
+			close: function (promise) {
+				var n = this;
+				new mojs.Html({
+					el        : n.barDom,
+					x         : {0: 500, delay: 10, duration: 500, easing: 'cubic.out'},
+					skewY     : {0: 10, delay: 10, duration: 500, easing: 'cubic.out'},
+					isForce3d : true,
+					onComplete: function () {
+						promise(function(resolve) {
+							resolve();
+						})
+					}
+				}).play();
+			}
+		}
+	}).show();
+	// noty ends
 
 
 
-  // generic delay function to be used whenever it is needed
-  /* delay(function(){
+	//TODO this talks to the bots endpoint to get suggestions
+	$('.autocomplete').autocomplete({
+		data: {
+			"Apple": null,
+			"Aexaaaple": null,
+			"Microsoft": null,
+			"Google": 'http://placehold.it/250x250'
+		}
+	});
+
+
+
+	// generic delay function to be used whenever it is needed
+	/* delay(function(){
      code here
     }, 1000 );
     */
-  var delay = (function(){
-    var timer = 0;
-    return function(callback, ms){
-      clearTimeout (timer);
-      timer = setTimeout(callback, ms);
-    };
-  })();
-  // end of delay function
-  
+	var delay = (function(){
+		var timer = 0;
+		return function(callback, ms){
+			clearTimeout (timer);
+			timer = setTimeout(callback, ms);
+		};
+	})();
+	// end of delay function
 
-  // Bots API
-  function bots(q){
-    console.log("sending a query request for: " + q);
-    $.ajax({
-      url: "https://api.upjoy.stream/v1/bots",
-      //url: "https://0.0.0.0/v1/bots",
-      data: 'query=' + q,
-      //data: 'query=' + q + '&bots=all',
-      dataType: 'json',
-      success: function (data) {
-	// Show Query Stats
-	$('#queryStats').empty().append("showing best <b>" + data.tpbbot.results_count + "</b> matching results for <b>" + data.query + "</b> in " + data.tpbbot.search_time + " secs");
-	//data = JSON.parse(data);
-	console.log(data);
-	console.log(data.query);
-	console.log(data.tpbbot);
-	console.log(data.tpbbot.torrents[0]);
 
-	var torrents = data.tpbbot.torrents;
+	// Bots API
+	function bots(q){
+		console.log("sending a query request for: " + q);
+		$.ajax({
+			url: "https://api.upjoy.stream/v1/bots",
+			//url: "https://0.0.0.0/v1/bots",
+			data: 'query=' + q,
+			//data: 'query=' + q + '&bots=all',
+			dataType: 'json',
+			success: function (data) {
+				// Show Query Stats
+				$('#queryStats').empty().append("showing best <b>" + data.tpbbot.results_count + "</b> matching results for <b>" + data.query + "</b> in " + data.tpbbot.search_time + " secs");
+				//data = JSON.parse(data);
+				console.log(data);
+				console.log(data.query);
+				console.log(data.tpbbot);
+				console.log(data.tpbbot.torrents[0]);
 
-	// Clears the slider from previous results
-	$('#results').slick('unslick');
-	$('#results').empty();
-	initSlides();
+				var torrents = data.tpbbot.torrents;
 
-	$.each (torrents, function (number) {
-	  console.log (number);
-	  console.log (torrents[number].name);
-	  torrent = torrents[number];
-	  // adds a slide per result
-	  //slideIndex++;
-	  $('#results').slick('slickAdd',
-	    '<div class="result">' + 
-	      '<div class="details">' + 
-	      'Name: ' + torrent.name + 
-	      ' </br> Seeders: ' + torrent.seeders + ' </br> Size:' + torrent.total_size + ' </br> </br>' +
-	      '</div>' + 
-	      '<button id="' + torrent.name + '" class="magnet btn waves-effect waves-yellowish white" data-clipboard-text="' +  torrent.magnet_link  + '"> copy magnet </button>' +
-	      //'<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
-	      '</br> </br></div>');
-	  //console.log (a[bb].TEST1);
+				// Clears the slider from previous results
+				$('#results').slick('unslick');
+				$('#results').empty();
+				initSlides();
+
+				$.each (torrents, function (number) {
+					console.log (number);
+					console.log (torrents[number].name);
+					torrent = torrents[number];
+					// adds a slide per result
+					//slideIndex++;
+					$('#results').slick('slickAdd',
+						'<div class="result">' + 
+						'<div class="details">' + 
+						'Name: ' + torrent.name + 
+						' </br> Seeders: ' + torrent.seeders + ' </br> Size:' + torrent.total_size + ' </br> </br>' +
+						'</div>' + 
+						'<button id="' + torrent.name + '" class="magnet btn waves-effect waves-yellowish white" data-clipboard-text="' +  torrent.magnet_link  + '"> copy magnet </button>' +
+						//'<a id= "' + number + '"class="show btn waves-effect waves-yellowish white modal-trigger" href="#theater" data-target="#theater">watch</a>'  +
+						'</br> </br></div>');
+					//console.log (a[bb].TEST1);
+				});
+
+
+				$('.show').on('click', function () {
+					// Get the current slide
+					//var currentSlide = $('#results').slick('slickCurrentSlide');
+					console.log(this.id);
+					console.log(torrents[this.id]);
+					$('#theater').openModal();
+				});  
+
+				$('#results').append('</br>')
+				$('#results').append('</br>')
+				$('#tpbbot').empty().append("<b>" + data.tpbbot.torrents[0].name + "</b> </br>" );
+				//$('.greeting-content').append(data.content);
+
+				$('#query_done').get(0).volume=0.1;
+				$('#query_done').get(0).play();
+			},
+		});
+	};
+
+	$("#search").trigger('autoresize').focus();
+
+	var timerid;	
+	$("#search").on("input",function(e){
+		var value = $(this).val();
+		if($(this).data("lastval")!= value){
+			$(this).data("lastval",value);
+			clearTimeout(timerid);
+			timerid = setTimeout(function() {
+				var q = $("#search").val();
+				bots(q);
+			},1000);
+		};
+	});
+	// end of search functionality
+
+	// blast https://codepen.io/sol0mka/pen/jAmNZm?editors=0010
+	const COLORS = {
+		RED:      '#FD5061',
+		YELLOW:   '#FFCEA5',
+		BLACK:    '#FCE205',
+		WHITE:    'white',
+		VINOUS:   '#A50710'
+	}
+
+	const bgBurst = new mojs.Burst({
+		left: 0, top: 0,
+		count:  3,
+		radius: 0,
+		degree: 0,
+		isShowEnd: false,
+		children: {
+			fill:           [ COLORS.RED, COLORS.WHITE, COLORS.BLACK ],
+			//radius:         'stagger(200, 2)',
+			radius:         'stagger(5, 1)',
+			scale:          { .25 : 3 },
+			duration:       500,
+			delay:          'stagger(50)',
+			//easing:         [ 'cubic.out', 'cubic.out', 'cubic.out' ],
+			easing:         [ 'cubic.out', 'cubic.in', 'cubic.in', 'cubic.out', 'cubic.out', 'cubic.out' ],
+			isForce3d:      true,
+		}
 	});
 
+	const burst1 = new mojs.Burst({
+		left: 0, top: 0,
+		count:    5,
+		radius:   { 50: 250 },
+		children: {
+			fill:   'white',
+			shape:  'line',
+			stroke: [ COLORS.WHITE, COLORS.VINOUS ],
+			strokeWidth: 12, 
+			radius: 'rand(30, 60)',
+			radiusY: 0,
+			scale: { 1: 0 },
+			pathScale: 'rand(.5, 1)',
+			degreeShift: 'rand(-360, 360)',
+			isForce3d: true,
+		}
+	});
 
-	$('.show').on('click', function () {
-	  // Get the current slide
-	  //var currentSlide = $('#results').slick('slickCurrentSlide');
-	  console.log(this.id);
-	  console.log(torrents[this.id]);
-	  $('#theater').openModal();
-	});  
+	const burst2 = new mojs.Burst({
+		top: 0, left: 0,
+		count:  3,
+		radius: { 0: 250 },
+		children: {
+			shape:      [ 'circle', 'rect' ],
+			points:     5,
+			fill:       [ COLORS.WHITE, COLORS.VINOUS ],
+			radius:     'rand(30, 60)',
+			scale:      { 1: 0 },
+			pathScale:  'rand(.5, 1)',
+			isForce3d:  true
+		}
+	});
 
-	$('#results').append('</br>')
-	$('#results').append('</br>')
-	$('#tpbbot').empty().append("<b>" + data.tpbbot.torrents[0].name + "</b> </br>" );
-	//$('.greeting-content').append(data.content);
+	const CIRCLE_OPTS = {
+		left: 0, top: 0,
+		fill:     COLORS.WHITE,
+		scale:    { .2: 1 },
+		opacity: { 1: 0 },
+		isForce3d: true,
+		isShowEnd: false
+	}
 
-	$('#query_done').get(0).volume=0.1;
-	$('#query_done').get(0).play();
-      },
-    });
-  };
+	const circle1 = new mojs.Shape({
+		...CIRCLE_OPTS,
+		//radius:   200,
+		radius:   100,
+	});
 
-  $("#search").trigger('autoresize').focus();
+	const circle2 = new mojs.Shape({
+		...CIRCLE_OPTS,
+		//radius:   240,
+		radius:   140,
+		easing: 'cubic.out',
+		delay: 150,
+	});
+	
+	document.addEventListener( 'click', function (e) {
+		//document.querySelector('#my-element');
+		if (document.querySelector('.results').contains(event.target)) { 
+		burst1
+			.tune({ x: e.pageX, y: e.pageY })
+			.generate()
+			.replay();
 
-  var timerid;	
-  $("#search").on("input",function(e){
-    var value = $(this).val();
-    if($(this).data("lastval")!= value){
-      $(this).data("lastval",value);
-      clearTimeout(timerid);
-      timerid = setTimeout(function() {
-	var q = $("#search").val();
-	bots(q);
-      },1000);
-    };
-  });
+		burst2
+			.tune({ x: e.pageX, y: e.pageY })
+			.generate()
+			.replay();
 
-  // end of search functionality
+		circle1
+			.tune({ x: e.pageX, y: e.pageY })
+			.replay();
 
-  var slider = $('#results');
-  // Slides
-  function initSlides(){
-    slider.slick({
-      arrows: false,
-      dots: true,
-      speed: 300,
-      fade: false,
-      lazyLoad: 'ondemand',
+		circle2
+			.tune({ x: e.pageX, y: e.pageY })
+			.replay();
 
-      // it fucksup the modal calls as it returns undefined between cycle-end\cycle-start(just don't use it)
-      centerMode: false,
-      infinite: false, 
+		bgBurst
+			.tune({ x: e.pageX, y: e.pageY })
+			.replay();
 
-      slidesToShow: 3,
-      slidesToScroll: 3,
+			console.log('clicked inside results, show fun!'); } 
+		else { 
+			console.log('clicked outside results.'); 
+		}
+	});
+	// https://github.com/legomushroom/mojs 
+	// End of blast https://codepen.io/sol0mka/pen/jAmNZm?editors=0010
 
-      autoplay: true,
-      //autoplay: false,
-      autoplaySpeed: 8000,
-      pauseOnHover: true,
+	// mojs icons
+	// Checkpoint
+	/* Icon 17 */
+	// taken from mo.js demos 
+	function isIOSSafari() { var userAgent; userAgent = window.navigator.userAgent; return userAgent.match(/iPad/i) || userAgent.match(/iPhone/i); }; 
+	// taken from mo.js demos 
+	function isTouch() { var isIETouch; isIETouch = navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0; return [].indexOf.call(window, 'ontouchstart') >= 0 || isIETouch; }; 
+	// taken from mo.js demos 
+	var isIOS = isIOSSafari(), clickHandler = isIOS || isTouch() ? 'touchstart' : 'click';	
+	function extend( a, b ) {
+		for( var key in b ) { 
+			if( b.hasOwnProperty( key ) ) {
+				a[key] = b[key];
+			}
+		}
+		return a;
+	}
+	function Animocon(el, options) {
+		this.el = el;
+		this.options = extend( {}, this.options );
+		extend( this.options, options );
 
-      accessibility: true,
-      cssEase: 'linear',
+		this.checked = false;
 
-      swipe: true,
-      swipeToSlide: true,
-      touchMove:true
+		this.timeline = new mojs.Timeline();
 
-    });
-  };
+		for(var i = 0, len = this.options.tweens.length; i < len; ++i) {
+			this.timeline.add(this.options.tweens[i]);
+		}
 
-  // Initiate the slides
-  initSlides();
+		var self = this;
+		this.el.addEventListener(clickHandler, function() {
+			if( self.checked ) {
+				self.options.onUnCheck();
+				console.log('checked, so uncheck it');
+			}
+			else {
+				self.options.onCheck();
+				self.timeline.replay();
+			}
+			self.checked = !self.checked;
+		});
+				}
+	//var el17 = document.querySelector('svg'); 
+	var el17 = document.querySelector('button.icobutton'), el17SVG = el17.querySelector('svg');
+
+	var translationCurve17 = mojs.easing.path('M0,100 C0,72 10,-0.1 50,0 C89.6,0.1 100,72 100,100'); 
+	new Animocon(el17, { tweens : [ 
+		// burst animation (line1) 
+		new mojs.Burst({ parent: el17, left: '65%', top: '40%', count: 5, radius: {40:120}, angle: 69, degree: 17, children: { shape: 'line', scale: 1, radius: {20:0}, stroke: ['#bf62a6', '#f28c33', '#f5d63d', '#79c267', '#78c5d6'], duration: 600, easing: mojs.easing.bezier(0.1, 1, 0.3, 1) }, }), 
+		// burst animation (circles) 
+		new mojs.Burst({ parent: el17, left: '65%', top: '40%', count: 4, radius: {20:50}, degree: 20, angle: 70, opacity: 0.6, children: { fill: ['#bf62a6','#f28c33','#f5d63d','#79c267','#78c5d6'], scale: 1, radius: {'rand(5,20)':0}, isSwirl: true, swirlSize: 4, duration: 1600, delay: [0,350,200,150,400], easing: mojs.easing.bezier(0.1, 1, 0.3, 1) } }), 
+		// icon scale animation 
+		new mojs.Tween({ duration : 800, easing: mojs.easing.bezier(0.1, 1, 0.3, 1), onUpdate: function(progress) { var translationProgress = translationCurve17(progress); el17SVG.style.WebkitTransform = el17SVG.style.transform = 'translate3d(' + -20 * translationProgress + '%,0,0)'; } }) ], onCheck : function() { el17SVG.style.fill = '#F198CA'; }, onUnCheck : function() { el17SVG.style.fill = '#C0C1C3'; } }); /* Icon 17 */	
+	//init();
+	// end of mojs icons
 
 
-  // On before slide change
-  $('#results').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    // can be used as torrents[nextSlide] to get the choice of the result and send it to WATCH 
-    console.log(nextSlide);
-  });
+	// hide scrollbars
+	function reloadScrollBars() {
+		document.documentElement.style.overflow = 'auto';  // firefox, chrome
+		document.body.scroll = "yes"; // ie only
+	}
 
+	function unloadScrollBars() {
+		document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+		document.body.scroll = "no"; // ie only
+	}
+	unloadScrollBars();
 
+	// end of hide scrolbars cube
+
+	// image cube
+
+	var swiper = new Swiper('.swiper-container', {
+		effect: 'cube',
+		grabCursor: true,
+		cubeEffect: {
+			shadow: true,
+			slideShadows: true,
+			shadowOffset: 10,
+			shadowScale: 0.2,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+		},
+		loop: true,
+		keyboard: {
+			enabled: true,
+			onlyInViewport: false,
+		},
+	});
+	// end of image cube
 });
-
-// HACKS here
-//
-//
-//
-//
-// WebTorrent ------------------------ 
-var torrentId = 'fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7'
-var torrentId = 'https://webtorrent.io/torrents/sintel.torrent'
-var torrentId = "magnet:?xt=urn:btih:4627721f1ce03613d7f1ace63ec20cadc612c130&dn=Dirty%20Masseur%2012%20%28Brazzers%29%20%E2%9C%A6%20NEW%20%E2%9C%A6%202016%20%2C%20WEB-DL%20Split%20Scenes&&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fzer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce"
-
-var torrentId = "0797d5d4396f39414b960392f702d2422dfd88aa"
-
-var opts = {
-  //maxConns: Number,        // Max number of connections per torrent (default=55)
-  //nodeId: String|Buffer,   // DHT protocol node ID (default=randomly generated)
-  //peerId: String|Buffer,   // Wire protocol peer ID (default=randomly generated)
-  //tracker:  //Boolean|Object, // Enable trackers (default=true), or options object for Tracker
-  //dht: Boolean|Object,     // Enable DHT (default=true), or options object for DHT
-  //webSeeds: Boolean        // Enable BEP19 web seeds (default=true)
-  //announce: ['wss://tracker.openwebtorrent.com'], // list of tracker server urls
-}
-
-var client = new WebTorrent(opts)
-client.tracker = ['wss://tracker.openwebtorrent.com', 'wss://tracker.btorrent.xyz', 'wss://tracker.fastcast.nz']
-console.log(client.tracker)
-
-// HTML elements
-var $body = document.body
-var $progressBar = document.querySelector('#progressBar')
-var $numPeers = document.querySelector('#numPeers')
-var $downloaded = document.querySelector('#downloaded')
-var $total = document.querySelector('#total')
-var $remaining = document.querySelector('#remaining')
-var $uploadSpeed = document.querySelector('#uploadSpeed')
-var $downloadSpeed = document.querySelector('#downloadSpeed')
-
-// Download the torrent
-client.add(torrentId, function (torrent) {
-
-  // as per https://github.com/feross/webtorrent/issues/218
-  // shouldn't it be an array of trackers?
-  //announce: 'wss://tracker.webtorrent.io'
-
-  // Stream the file in the browser
-  torrent.files[0].appendTo('#output')
-
-  // Trigger statistics refresh
-  torrent.on('done', onDone)
-  setInterval(onProgress, 500)
-  onProgress()
-
-  // Statistics
-  function onProgress () {
-    // Peers
-    $numPeers.innerHTML = torrent.numPeers + (torrent.numPeers === 1 ? ' peer' : ' peers')
-
-    // Progress
-    var percent = Math.round(torrent.progress * 100 * 100) / 100
-    $progressBar.style.width = percent + '%'
-    $downloaded.innerHTML = prettyBytes(torrent.downloaded)
-    $total.innerHTML = prettyBytes(torrent.length)
-
-    // Remaining time
-    var remaining
-    if (torrent.done) {
-      remaining = 'Done.'
-    } else {
-      remaining = moment.duration(torrent.timeRemaining / 1000, 'seconds').humanize()
-      remaining = remaining[0].toUpperCase() + remaining.substring(1) + ' remaining.'
-    }
-    $remaining.innerHTML = remaining
-
-    // Speed rates
-    $downloadSpeed.innerHTML = prettyBytes(torrent.downloadSpeed) + '/s'
-    $uploadSpeed.innerHTML = prettyBytes(torrent.uploadSpeed) + '/s'
-  }
-  function onDone () {
-    $body.className += ' is-seed'
-    onProgress()
-  }
-})
-
-// Human readable bytes util
-function prettyBytes(num) {
-  var exponent, unit, neg = num < 0, units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-  if (neg) num = -num
-  if (num < 1) return (neg ? '-' : '') + num + ' B'
-  exponent = Math.min(Math.floor(Math.log(num) / Math.log(1000)), units.length - 1)
-  num = Number((num / Math.pow(1000, exponent)).toFixed(2))
-  unit = units[exponent]
-  return (neg ? '-' : '') + num + ' ' + unit
-}
-console.log(client)
-
-// WebTorrent ends ------------------------ 
-//
-
-
-/*
- *	var items = [];
-	$.each(data.tpbbot.torrents, function( key, val ) {
-	  items.push( "<li id='" + key + "'>" + val.name + "</li>" );
-	});
-
-
-	console.log(data);
-	console.log(data.query);
-	console.log(data.tpbbot);
-	console.log(data.tpbbot.torrents);
-	console.log(data.tpbbot.torrents[0]);
-
-  $("#search").keyup(function(e){
-    delay(function(){
-      var q = $("#search").val();
-      search(q);
-    }, 1000 );
-  });
-
-
-	$( "<div/>", {
-	  "class": 'carousel-item white black-text',
-	  "href":"#one",
-	  "html": "very l#$#@@$@$@$@$@$@$@$@ong long long secret" + items.join( "" )
-	}).appendTo( "#results" );
-
-*/

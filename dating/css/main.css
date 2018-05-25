@@ -31,128 +31,8 @@ body {
 }
 
 
-.logo{
-  /*
-  font-family: 'Poiret One', cursive;
-   */
-  text-shadow: 0px 0.4px 0.4px black;
-  font-weight: bold !important;
-  letter-spacing: 4px;
-}
-
-.download-cloud-header{
-
-  padding-right: 50px;
-  padding-left: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  justify-content: center;
-}
-
-
-.demo-card-wide.mdl-card {
-  width: 100%;
-}
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background: url('../assets/demos/welcome_card.jpg') center / cover;
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
-
-video {
-  width: 100%    !important;
-  height: auto   !important;
-}
-
-.mdl-dialog__actions--full-width>*{
-  text-align: center !important;
-}
-
-
-.footer_info{
-  display: inline-block;
-}
-
-
-
-
-#output video {
-  width: 100%;
-}
-#progressBar {
-  height: 5px;
-  width: 0%;
-  background-color: #35b44f;
-  transition: width .4s ease-in-out;
-}
-body.is-seed .show-seed {
-  display: inline;
-}
-body.is-seed .show-leech {
-  display: none;
-}
-.show-seed {
-  display: none;
-}
-#status code {
-  font-size: 90%;
-  font-weight: 700;
-  margin-left: 3px;
-  margin-right: 3px;
-  border-bottom: 1px dashed rgba(255,255,255,0.3);
-}
-
-#status {
-  color: #fff;
-  font-size: 17px;
-  padding: 5px;
-}
-a:link, a:visited {
-  color: #30a247;
-  text-decoration: none;
-}
-
-.slogon_effect {
-  color: #fff;
-  font-family: Monoton;
-  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
-  animation: neon1 1.5s ease-in-out infinite alternate;
-}
-
-.btn-large{
-color: #e91e63 !important;
-}
-
-.upjoystream-large-text{
-  /* font-size: 3rem !important;
-  height: 3rem !important;
-   */
-  font-size: 30px !important;
-  font-weight: 700 !important;
-  background-color: white !important;
-  background-image: none !important;
-}
-
-
-.modal-content{
-  width:auto !important;
-  height:auto !important;
-}
-
-
 a{
   color: #000000 !important;
-}
-
-.waves-effect.waves-yellowish .waves-ripple {
-  /* The alpha value allows the text and background color
-   *      of the button to still show through. */
-  background-color: #ffc107; 
-  color: rgb(255, 83, 141) !important;
 }
 
 #results{
@@ -223,8 +103,9 @@ a{
 }
 
 #search{
-  background-color: white !important;
-  background-image: none !important;
+	background-color: white !important;
+	background-image: none !important;
+	border:none;border-bottom:1px solid black;border-radius:0;outline:none;height:3rem;width:100%;margin:0 0 20px 0;box-shadow:none;box-sizing:content-box;
 }
 
 
@@ -254,4 +135,13 @@ input:-webkit-autofill:active {
 	box-shadow: 0 8px 6px -6px black;
 }
 
-.icobutton .fa{ display: inline !important}
+.icobutton .fa{ 
+	display: inline !important;
+}
+
+.button::selection {
+	background: white !important; /* WebKit/Blink Browsers */
+}
+.button::-moz-selection {
+	background: white  !important; /* Gecko Browsers */
+}

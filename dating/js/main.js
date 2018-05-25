@@ -4,6 +4,32 @@ console.log('%c | upjoy.stream - a project by hackspree |', 'background: #792e93
 console.log('%c | ------------------------------------- |', 'background: #792e93; color: yellow; display: block;');
 
 $(document).ready(function () {
+
+	$(".results").keydown(function(e){
+		var element = e.target.nodeName.toLowerCase();
+		//if ((element != 'input' && element != 'textarea') || $(e.target).attr("readonly") || (e.target.getAttribute("type") ==="checkbox")) {
+		//	$("#search").focus();
+		//}
+
+		if ((element != 'input')) {
+			switch(e.which) {
+				case 32: // left
+					//$('#results').slick("slickPrev");
+					pony();	
+					console.log("space keycode 32.");	
+					break;
+					//case 40: // down
+					//$('#results').slick("slickPrev");
+					//	break;
+
+				default: return; // exit this handler for other keys
+			}
+		}
+		else{
+			e.preventDefault(); // prevent the default action (scroll / move caret)
+		}
+	});
+
 	// noty
 
 	function nodify(type, text) {
@@ -327,9 +353,9 @@ $(document).ready(function () {
 			.tune({ x: e.pageX, y: e.pageY })
 			.replay();
 
-			console.log('clicked inside results, show fun!'); } 
+			console.log('mouseclick fun inside results, show fun!'); } 
 		else { 
-			console.log('clicked outside results.'); 
+			console.log('mouseclickfun outside results, dont show fun.'); 
 		}
 	});
 	// https://github.com/legomushroom/mojs 
@@ -377,9 +403,11 @@ $(document).ready(function () {
 			}
 			self.checked = !self.checked;
 		});
-				}
-	//var el17 = document.querySelector('svg'); 
-	var el17 = document.querySelector('button.icobutton'), el17SVG = el17.querySelector('svg');
+	}
+	function pony(){ 
+		console.log("pony was called");
+		//var el17 = document.querySelector('svg'); 
+/*	var el17 = document.querySelector('button.icobutton'), el17SVG = el17.querySelector('heart');
 
 	var translationCurve17 = mojs.easing.path('M0,100 C0,72 10,-0.1 50,0 C89.6,0.1 100,72 100,100'); 
 	new Animocon(el17, { tweens : [ 
@@ -388,8 +416,14 @@ $(document).ready(function () {
 		// burst animation (circles) 
 		new mojs.Burst({ parent: el17, left: '65%', top: '40%', count: 4, radius: {20:50}, degree: 20, angle: 70, opacity: 0.6, children: { fill: ['#bf62a6','#f28c33','#f5d63d','#79c267','#78c5d6'], scale: 1, radius: {'rand(5,20)':0}, isSwirl: true, swirlSize: 4, duration: 1600, delay: [0,350,200,150,400], easing: mojs.easing.bezier(0.1, 1, 0.3, 1) } }), 
 		// icon scale animation 
-		new mojs.Tween({ duration : 800, easing: mojs.easing.bezier(0.1, 1, 0.3, 1), onUpdate: function(progress) { var translationProgress = translationCurve17(progress); el17SVG.style.WebkitTransform = el17SVG.style.transform = 'translate3d(' + -20 * translationProgress + '%,0,0)'; } }) ], onCheck : function() { el17SVG.style.fill = '#F198CA'; }, onUnCheck : function() { el17SVG.style.fill = '#C0C1C3'; } }); /* Icon 17 */	
-	//init();
+		new mojs.Tween({ duration : 800, easing: mojs.easing.bezier(0.1, 1, 0.3, 1), onUpdate: function(progress) { var translationProgress = translationCurve17(progress); el17SVG.style.WebkitTransform = el17SVG.style.transform = 'translate3d(' + -20 * translationProgress + '%,0,0)'; } }) ], onCheck : function() { el17SVG.style.fill = '#F198CA'; }, onUnCheck : function() { el17SVG.style.fill = '#C0C1C3'; } }); 
+*/
+		var el16 = document.querySelector('button.icobutton'), el16span = el16.querySelector('span'); var opacityCurve16 = mojs.easing.path('M0,0 L25.333,0 L75.333,100 L100,0'); var translationCurve16 = mojs.easing.path('M0,100h25.3c0,0,6.5-37.3,15-56c12.3-27,35-44,35-44v150c0,0-1.1-12.2,9.7-33.3c9.7-19,15-22.9,15-22.9'); var squashCurve16 = mojs.easing.path('M0,100.004963 C0,100.004963 25,147.596355 25,100.004961 C25,70.7741867 32.2461944,85.3230873 58.484375,94.8579105 C68.9280825,98.6531013 83.2611815,99.9999999 100,100'); new Animocon(el16, { tweens : [ 
+			// burst animation (circles) 
+			new mojs.Burst({ parent: el16, count: 6, radius: {0:150}, degree: 50, angle: -25, opacity: 0.3, children: { fill: '#FF6767', scale: 1, radius: {'rand(5,15)':0}, duration: 1700, delay: 350, easing: mojs.easing.bezier(0.1, 1, 0.3, 1) } }), new mojs.Burst({ parent: el16, count: 3, degree: 0, radius: {80:250}, angle: 180, children: { top: [ 45, 0, 45 ], left: [ -15, 0, 15 ], shape: 'line', radius: {60:0}, scale: 1, stroke: '#FF6767', opacity: 0.4, duration: 650, delay: 200, easing: mojs.easing.bezier(0.1, 1, 0.3, 1) }, }), 
+			// icon scale animation 
+			new mojs.Tween({ duration : 500, onUpdate: function(progress) { var translateProgress = translationCurve16(progress), squashProgress = squashCurve16(progress), scaleX = 1 - 2*squashProgress, scaleY = 1 + 2*squashProgress; el16span.style.WebkitTransform = el16span.style.transform = 'translate3d(0,' + -180*translateProgress + 'px,0) scale3d(' + scaleX + ',' + scaleY + ',1)'; var opacityProgress = opacityCurve16(progress); el16span.style.opacity = opacityProgress; el16.style.color = progress >= 0.75 ? '#FF6767' : '#C0C1C3'; } }) ], onUnCheck : function() { el16.style.color = '#C0C1C3'; } }); /* Icon 16 */
+	}	//init();
 	// end of mojs icons
 
 
@@ -425,6 +459,10 @@ $(document).ready(function () {
 		keyboard: {
 			enabled: true,
 			onlyInViewport: false,
+		},
+		autoplay: {
+			delay: 2000,
+			waitForTransition: false,
 		},
 	});
 	// end of image cube

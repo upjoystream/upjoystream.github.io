@@ -1,0 +1,274 @@
+<!doctype html>
+<!--
+  Copyright © 2016 upjoy.stream. All rights reserved.
+-->
+
+<html lang="en">
+  <head>
+    <!--
+      upjoy.stream 
+      https://upjoy.stream
+
+      Author     Mohamed Fouad aka zotherstupidguy
+      Website    http://upjoy.stream
+      Copyright  2016. upjoy.stream.
+
+      Data is not information.
+      Information is not knowledge.
+      Knowledge is not understanding.
+      Understanding is not wisdom.
+
+
+      Far better is it to dare mighty things, to win glorius triumphs,
+      even though checkered by failure... than to rank with those poor spirits
+      who neither enjoy nor suffer much, because they live in a gray twilight
+      that knows not victory nor defeat.
+      — Theodore Roosevelt
+    -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="upjoy.stream">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>upjoy.stream</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation-flex.css">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.orange-yellow.min.css" /> 
+      <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+    --> 
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <link href="https://vjs.zencdn.net/5.11.8/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css">
+
+
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- If you'd like to support IE8 -->
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  </head>
+  <body>
+
+    <div class="row medium-8  columns">
+
+      <div class="row">
+	<div class="col s12">
+	  <div class="row">
+	    <div class="input-field col s12 upjoystream-large-text">
+	      <!--<input type="text" id="search" class="autocomplete upjoystream-large-text">
+	      -->
+	      <input type="text" id="search" class="upjoystream-large-text" placeholder="search for video streams" autocomplete=off>
+
+	      <!--
+	 <label for="autocomplete-input">search for video streams</label>
+	 <a class="waves-effect waves-light btn-large" style="color: #e91e63">I'm feeling lucky</a>
+	      -->
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      <!--
+	<video id="upjoystream_player" class="video-js" controls preload="auto"  width="auto" height="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+	<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+	</video>
+      -->
+
+      <div id="queryStats">
+      </div>
+
+      <!-- 
+	<div id="results" class="carousel carousel-slider center" data-indicators="true">
+      -->
+      <div id="results" class='center' style='' data-indicators="true">
+	upjoy.stream is a neat experience for finding, sharing and streaming videos that you like!
+	<br />
+	We hope you enjoy it, it is 100% free!
+      </div>
+
+      <!-- Modal Structure -->
+      <div id="theater" class="modal modal-fixed-footer">
+	<div class="modal-content">
+	  <!--<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+	  -->
+	</div>
+	<div class="modal-footer center">
+	  link to watch in VLC or somthing if it is not streamable via the browser! details of the streaming video like its name, etc. 
+	  <!--
+     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Signup</a>
+	  -->
+	</div>
+      </div>
+
+      
+      <!--
+	<div id="hero">
+	<div id="output">
+	<div id="progressBar"></div>
+	</div>
+
+	<div id="status">
+	<div>
+	<span class="show-leech">Downloading </span>
+	<span class="show-seed">Seeding </span>
+	<code>
+
+	<a id="torrentLink" href="magnet:?xt=urn:btih:fe9922cd9cce5038a3948ea8fc8c49a1d9590cf7&dn=Nikola+Tesla%27s+Life+New+Documentary+Full.mp4&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Fzer0day.ch%3A1337&tr=udp%3A%2F%2Fopen.demonii.com%3A1337&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Fexodus.desync.com%3A6969">another.torrent</a>
+	</code>
+	<span class="show-leech"> from </span>
+	<span class="show-seed"> to </span>
+	<code id="numPeers">0 peers</code>. 
+	</div>
+	<div>
+	<code id="downloaded"></code>
+	of <code id="total"></code>
+	— <span id="remaining"></span><br/>
+	&#x2198;<code id="downloadSpeed">0 b/s</code>
+	/ &#x2197;<code id="uploadSpeed">0 b/s</code>
+	</div>
+	</div>
+	</div>
+      -->
+
+      <footer style="background-color: white" class="mdl-mega-footer">
+
+   <hr>
+	<!--
+   <hr>
+   <ul id="footer_info">
+   <il>
+   <a style="color:#e0e0e0;"> about </a>
+   </il>
+   <il>
+   <a style="color:#e0e0e0;"> feature request</a>
+   </il>
+   <il>
+   <a style="color:#e0e0e0;"> bugs </a>
+   </il>
+
+   </ul>
+   <hr>
+
+   <span>
+   <span>
+   <h5>
+   <div style="" class="logo"> 
+   <span style="color: #e0e0e0;">up</span><span style="color: #ff4081;">joy</span><span style="color: #e0e0e0;">.</span><span style="color: #e0e0e0;">stream</span>
+   </div>
+   </h5>
+   </span>
+	-->
+	<!--
+   <a> about </a>
+   about: google allows you to find out the location of a resource, upjoy.stream belives that a search engine should allow you to get your hands on the resource, content-based search vs location-based search, thus upjoy.stream searchs video-based active torrent swarms and lets you join any active swarm to start streaming the video to your computer. TODO rewrite in simpler straightforward manner grandma-style 
+   <a> api </a>
+   <a> advertisements </a>
+   <a> terms </a>
+   <a> report </a>
+	-->
+	</br>
+	<span class="font-size:xx-small !important;">
+	Any usage of upjoy.stream constitutes an affirmative full acknowledgement & acceptance of its <a href="terms.md">ToS</a>.
+	</span>
+
+	</br>
+	© 2016 <span class=""> <span style="color: #ff4081;">upjoy</span>.<span style="color: #792e93;">stream</span>  </span>  <span style="color:">  Peer-to-Peer Streaming Search Engine </span>
+
+	<!-- become a sponser and fund upjoy.stream! | Meet our sponsors -->
+	- <a href="https://hackspree.com" > sponsored by hackspree </a>
+
+      </footer>
+    </div> 
+
+    <audio id="query_done" controls hidden="hidden">
+      <source src="audio/query_done.mp3" type="audio/mpeg">
+	<!--This displays an error to users that don't have it supported-->
+    </audio>
+
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-86512092-1', 'auto');
+ga('send', 'pageview');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <script src="https://vjs.zencdn.net/5.11.8/video.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+
+    <script src="js/jquery.mousewheel.min.js"></script>
+
+    <script src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script type="text/javascript" src="js/noty/themes/relax.js"></script>
+
+
+    <script src="js/main.js"></script>
+<script type="text/javascript">
+    adroll_adv_id = "RI2VF2RB25ANJL4MSJB5T7";
+    adroll_pix_id = "YJCB5FHZCBDTFPWFTMUD7A";
+    /* OPTIONAL: provide email to improve user identification */
+    /* adroll_email = "username@example.com"; */
+    (function () {
+        var _onload = function(){
+            if (document.readyState && !/loaded|complete/.test(document.readyState)){setTimeout(_onload, 10);return}
+            if (!window.__adroll_loaded){__adroll_loaded=true;setTimeout(_onload, 50);return}
+            var scr = document.createElement("script");
+            var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+            scr.setAttribute('async', 'true');
+            scr.type = "text/javascript";
+            scr.src = host + "/j/roundtrip.js";
+            ((document.getElementsByTagName('head') || [null])[0] ||
+                document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        };
+        if (window.addEventListener) {window.addEventListener('load', _onload, false);}
+        else {window.attachEvent('onload', _onload)}
+    }());
+</script>
+
+  </body>
+</html>
